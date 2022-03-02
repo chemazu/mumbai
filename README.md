@@ -1,4 +1,9 @@
 # My Comments
+the following are the domains
+http://localhost:3000 : LOGIN PAGE
+http://localhost:3000/user USER DASHBOARD
+http://localhost:3000/create  CREATE USER
+http://localhost:3000/edit/:id id , is the user id to be update
 
 
 # Getting Started with Create React App

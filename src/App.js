@@ -42,7 +42,9 @@ function App() {
               <User pending={{ isPending, setIsPending, page, setPage }} />
             }
           />
-          <Route path="/edit/:id" element={<Edit />} />
+          <Route path="/edit/:id" element={<Edit title={"Edit"} act={false} />} />
+          <Route path="/create" element={<Edit title={"Create"} act={true}/>} />
+
         </Routes>
       </UserContext.Provider>
     </div>

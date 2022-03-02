@@ -5,63 +5,89 @@ import axios from "axios";
 
 import "./style.scss";
 
-export default function Edit() {
+export default function Edit(props) {
+  const { act, title } = props;
   const navigate = useNavigate();
+  const [userData, setUserData] = useState({});
+
   const { id } = useParams();
-  const { value: email, change: changeEmail, reset: resetEmail } = useInput("");
-  const {
-    value: firstName,
-    change: changeFirstName,
-    reset: resetFirstName,
-  } = useInput("");
-  const {
-    value: LastName,
-    change: changeLastName,
-    reset: resetLastName,
-  } = useInput("");
-  const handEdit = async (b) => {
+  const { value: name, change: changeName, reset: resetName } = useInput("");
+  const { value: job, change: changeJob, reset: resetJob } = useInput("");
+
+  const handleCreate = async (e) => {
+    e.preventDefault();
+
     try {
-      const req = await axios.put(`https://reqres.in/api/users/${id}`, b);
-      const token = req.data.token;
-      localStorage.setItem("token", JSON.stringify(token));
+      const req = await axios.post(`https://reqres.in/api/users`, {
+        name,
+        job,
+      });
+      alert(`${req.data.name} has been created`);
+
+      resetJob();
+      resetName();
     } catch (error) {
       console.log(error);
     }
   };
-  const handleSubmit = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
+
+    try {
+      const req = await axios.put(`https://reqres.in/api/users/${id}`, {
+        name,
+        job,
+      });
+      alert(`${req.data.name} has been Updated`);
+      resetJob();
+      resetName();
+    } catch (error) {
+      console.log(error);
+    }
   };
+  // const handleCreate = (e) => {
+  //   e.preventDefault();
+  //   handleCreate();
+  // };
+
   return (
     <div className="edit">
       <div className="soft">
-        <h2>Edit</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="auth-form-item">
-            <input placeholder="Enter e-mail" type="email" {...changeEmail} />
-          </div>
+        <h2>{title}</h2>
+        <form >
           <div className="auth-form-item">
             <input
-              placeholder="Enter First Name"
+              placeholder="Enter Name"
               type="text"
-              {...changeFirstName}
+              name="name"
+              // onChange={handleChange}
+              {...changeName}
             />
           </div>
           <div className="auth-form-item">
             <input
-              placeholder="Enter Last Name"
+              placeholder="Enter Job"
               type="text"
-              {...changeLastName}
+              name="job"
+              // onChange={handleChange}
+              {...changeJob}
             />
           </div>
 
           {/* <p className="forgot">Forgot Password</p> */}
-          <button
-            onClick={() => {
-              navigate("/edit/create");
-            }}
+          {act?<button
+            onClick={
+            handleCreate}
           >
             Create
-          </button>
+          </button>:
+          <button
+          onClick={
+          handleUpdate}
+        >
+          Edit
+        </button>}
+          
         </form>
       </div>
     </div>
