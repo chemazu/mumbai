@@ -35,7 +35,7 @@ export default function User(props) {
       <div>
         {users && (
           <div>
-            <button>Create</button>
+            <button onClick={()=>{navigate("/create");}}>Create</button>
             <span>&nbsp;</span>
             <button onClick={logOut}>Log Out</button>
           </div>
