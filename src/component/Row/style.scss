@@ -1,0 +1,29 @@
+.row {
+  border-top: 1px solid rgba(33, 63, 125, 0.06);
+
+  p {
+    width: 100px;
+    text-align: center;
+  }
+  .email {
+    font-size: 60%;
+  }
+  align-items: center;
+  .actions {
+    align-items: center;
+    padding: 5px;
+    display: grid;
+  }
+  .delete {
+    background-color: red;
+  }
+  button {
+    width: 100%;
+    margin-right: 5;
+    padding: 10px;
+    background: #39cdcc;
+    border: 0px solid #39cdcc;
+    border-radius: 8px;
+    color: #fff;
+  }
+}

@@ -1,0 +1,22 @@
+.edit {
+  padding: 40px 10%;
+  .soft {
+    border: 1px solid rgb(141, 141, 145);
+    padding: 10px 5%;
+    padding-bottom: 10%;
+  }
+  form {
+    .auth-form-item {
+      padding: 20px 0;
+    }
+    input {
+      width: 80%;
+
+      max-width: 400px;
+    }
+  }
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   flex-direction: column;
+}

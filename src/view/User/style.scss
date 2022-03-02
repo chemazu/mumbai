@@ -1,0 +1,18 @@
+.user {
+  padding: 50px 10%;
+  .pag {
+    display: flex;
+    padding: 20px;
+    padding-right: 50px;
+
+    width: 100%;
+    justify-content: space-between;
+    color: green;
+    div {
+      &:hover {
+        color: blue;
+        cursor: pointer;
+      }
+    }
+  }
+}
