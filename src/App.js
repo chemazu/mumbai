@@ -11,25 +11,22 @@ function App() {
   const [page, setPage] = useState(1);
   const [users, setUsers] = useState(4);
   const [isPending, setIsPending] = useState(true);
-
-  const FetchUsers = async () => {
+  const fetchUsers = async ({url,method}) => {
     try {
-      const request = await axios.get(
-        `https://reqres.in/api/users?page=${page}&per_page=4`
+      const request = await axios[method](
+        url
       );
       setUsers(request);
       setIsPending(false);
-      console.log(request);
-
       localStorage.setItem("users", JSON.stringify(request));
     } catch (error) {
       console.log(error);
     }
   };
+   
   useEffect(() => {
-    FetchUsers();
+    fetchUsers({url:`https://reqres.in/api/users?page=${page}&per_page=4`,method:"get"});
     localStorage.setItem("users", JSON.stringify(users));
-    console.log();
   }, [page]);
   return (
     <div className="App">
@@ -44,11 +41,9 @@ function App() {
           />
           <Route path="/edit/:id" element={<Edit title={"Edit"} act={false} />} />
           <Route path="/create" element={<Edit title={"Create"} act={true}/>} />
-
         </Routes>
       </UserContext.Provider>
     </div>
   );
 }
-
 export default App;

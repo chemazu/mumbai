@@ -8,7 +8,8 @@ import "./style.scss";
 export default function Login() {
   const navigate = useNavigate();
   const [users, setUsers] = useState("");
-  const FetchUsers = async (a, b) => {
+
+  const fetchUsers = async () => {
     try {
       const request = await axios.get(
         `https://reqres.in/api/users?page=1&per_page=12`
@@ -20,10 +21,9 @@ export default function Login() {
     }
   };
 
-  const handLogin = async (a, b) => {
+  const handleLogin = async (a, b) => {
     try {
       const req = await axios.post(a, b);
-
       const token = req.data.token;
       localStorage.setItem("token", JSON.stringify(token));
     } catch (error) {
@@ -34,24 +34,25 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const info = users.data.data;
-    console.log(info);
-    const stuff = info.filter((item) => {
+    const result = info.filter((item) => {
       if (item.email == email) {
         return true;
       }
       return false;
     });
-    if (stuff.length == 0) {
+    if (result.length == 0) {
       navigate("/user");
     } else {
-      handLogin("https://reqres.in/api/login", {
+      handleLogin("https://reqres.in/api/login", {
         email: email,
         password: password,
       });
     }
+    resetEmail()
+    resetPassword()
   };
   useEffect(() => {
-    FetchUsers();
+    fetchUsers();
   }, []);
   const { value: email, change: changeEmail, reset: resetEmail } = useInput("");
   const {
@@ -86,8 +87,6 @@ export default function Login() {
                 {...changePassword}
               />
             </div>
-
-            {/* <p className="forgot">Forgot Password</p> */}
             <button>LOG IN</button>
           </form>
         </div>

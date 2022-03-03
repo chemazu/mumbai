@@ -18,7 +18,7 @@ export default function Table() {
       </div>
       <div className="bottom">
         {user.map((item) => (
-          <Row item={item} />
+          <Row item={item} key={item.id}/>
         ))}
       </div>
     </div>

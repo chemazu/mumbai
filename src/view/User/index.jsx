@@ -4,9 +4,9 @@ import Table from "../../component/Table";
 import { useNavigate } from "react-router-dom";
 
 export default function User(props) {
+  var users = JSON.parse(localStorage.getItem("token"));
   const { isPending, page, setPage } = props.pending;
   const navigate = useNavigate();
-
   const logOut = () => {
     localStorage.clear();
     navigate("/");
@@ -25,8 +25,6 @@ export default function User(props) {
       setPage(page - 1);
     }
   };
-  var users = JSON.parse(localStorage.getItem("token"));
-  console.log(users);
 
   return (
     <div className="user">

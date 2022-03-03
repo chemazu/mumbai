@@ -45,10 +45,7 @@ export default function Edit(props) {
       console.log(error);
     }
   };
-  // const handleCreate = (e) => {
-  //   e.preventDefault();
-  //   handleCreate();
-  // };
+ 
 
   return (
     <div className="edit">

@@ -3,7 +3,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 91.3vh;
-
   .left {
     display: flex;
     align-items: center;
@@ -28,7 +27,6 @@
         p {
           font-style: normal;
           font-weight: normal;
-          //   font-size: 16px;
           line-height: 20px;
           color: #545f7d;
         }
@@ -116,8 +114,6 @@
   .login {
     grid-template-columns: 1fr;
   height: fit-content;
-
-
     .left {
       padding: 0px;
       padding-top: 20%;
